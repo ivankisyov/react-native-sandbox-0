@@ -2,19 +2,21 @@ import React, { useState, useReducer } from "react";
 import { Text, StyleSheet, View, Button, TextInput } from "react-native";
 
 const TextScreen = () => {
-  const [currentName, setCurrentName] = useState("");
+  const [currentPassword, setCurrentPassword] = useState("");
 
   return (
     <View>
-      <Text>Enter name:</Text>
+      <Text>Enter password:</Text>
       <TextInput
         style={styles.input}
         autoCapitalize="none"
         autoCorrect={false}
-        value={currentName}
-        onChangeText={(newValue) => setCurrentName(newValue)}
+        value={currentPassword}
+        onChangeText={(newValue) => setCurrentPassword(newValue)}
       />
-      <Text>Your name is: {currentName}</Text>
+      {currentPassword.length > 0 && currentPassword.length < 5 ? (
+        <Text>Password's length must be at least 5 characters long</Text>
+      ) : null}
     </View>
   );
 };
